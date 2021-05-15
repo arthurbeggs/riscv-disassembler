@@ -2129,21 +2129,21 @@ static void format_inst(char *buf, size_t buflen, size_t tab, rv_decode *dec)
     char tmp[64];
     const char *fmt;
 
-    size_t len = inst_length(dec->inst);
-    switch (len) {
-    case 2:
-        snprintf(buf, buflen, INST_FMT_2, dec->inst);
-        break;
-    case 4:
-        snprintf(buf, buflen, INST_FMT_4, dec->inst);
-        break;
-    case 6:
-        snprintf(buf, buflen, INST_FMT_6, dec->inst);
-        break;
-    default:
-        snprintf(buf, buflen, INST_FMT_8, dec->inst);
-        break;
-    }
+    //size_t len = inst_length(dec->inst);
+    //switch (len) {
+    //case 2:
+        //snprintf(buf, buflen, INST_FMT_2, dec->inst);
+        //break;
+    //case 4:
+        //snprintf(buf, buflen, INST_FMT_4, dec->inst);
+        //break;
+    //case 6:
+        //snprintf(buf, buflen, INST_FMT_6, dec->inst);
+        //break;
+    //default:
+        //snprintf(buf, buflen, INST_FMT_8, dec->inst);
+        //break;
+    //}
 
     fmt = opcode_data[dec->op].format;
     while (*fmt) {
@@ -2192,9 +2192,9 @@ static void format_inst(char *buf, size_t buflen, size_t tab, rv_decode *dec)
         case 'o':
             snprintf(tmp, sizeof(tmp), "%d", dec->imm);
             append(buf, tmp, buflen);
-            while (strlen(buf) < tab * 2) {
+            // while (strlen(buf) < tab * 2) {
                 append(buf, " ", buflen);
-            }
+            // }
             snprintf(tmp, sizeof(tmp), "# 0x%" PRIx64,
                 dec->pc + dec->imm);
             append(buf, tmp, buflen);
@@ -2263,9 +2263,9 @@ static void format_inst(char *buf, size_t buflen, size_t tab, rv_decode *dec)
             }
             break;
         case '\t':
-            while (strlen(buf) < tab) {
+            //while (strlen(buf) < tab) {
                 append(buf, " ", buflen);
-            }
+            //}
             break;
         case 'A':
             if (dec->aq) {
